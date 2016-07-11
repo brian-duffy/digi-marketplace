@@ -10,11 +10,6 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 django.setup()
 from web_scraper.settings import BASE_DIR
 #
-json_file = os.path.join(BASE_DIR, 'latest_updates.json')
-website = r'https://www.digitalmarketplace.service.gov.uk/digital-outcomes-and-specialists/opportunities'
-base_website = r'https://www.digitalmarketplace.service.gov.uk'
-website_ele = 'div'
-website_tag = 'search-result'
 
 def json_serial(obj):
     """JSON serializer for objects not serializable by default json code"""
@@ -66,8 +61,5 @@ def get_information(raw_data=None):
             columns["url"] = urls[i]
             fields["fields"] = columns
             fields_l.append(fields)
-    return json.dumps(fields_l, ensure_ascii=True, default=json_serial)
-
-detailed_scrape = get_information(raw_data=scrape_website(weburl=website, element=website_ele, tag=website_tag))
-with open (json_file, 'w') as filer:
-    filer.write(str(detailed_scrape))
+    return fields_l
+    #return json.dumps(fields_l, ensure_ascii=True, default=json_serial)

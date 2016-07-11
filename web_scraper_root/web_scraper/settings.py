@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'polls'
+    'polls.apps.PollsConfig'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -120,3 +120,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAIL_BACKEND = "sgbackend.SendGridBackend"
+SENDGRID_API_KEY = "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"
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'brian.duffy'
+EMAIL_HOST_PASSWORD = '89okohak'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
