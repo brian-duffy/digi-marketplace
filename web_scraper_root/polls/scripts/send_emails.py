@@ -17,6 +17,7 @@ def send_emails(mailing_list=None, new_entries=None):
                                      ['brian.duffy@soprasteria.com'])
         msg.attach_alternative(email_html_body, "text/html")
         msg.send()
+        return
 
 def compose_email(entry=None):
     """
@@ -32,6 +33,7 @@ def compose_email(entry=None):
     location = entry['fields']['location']
     email_subject = 'New Opportunity With {} in {}'.format(client,location)
     email_txt_body = """
+    <center><img src="http://assets.publishing.service.gov.uk/static/opengraph-image-a1f7d89ffd0782738b1aeb0da37842d8bd0addbd724b8e58c3edbc7287cc11de.png"></center>
     {} is looking for {} in {}.
     More information: {}
     End date for bid: {}

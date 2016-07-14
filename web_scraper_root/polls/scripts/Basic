@@ -1,0 +1,27 @@
+Basic
+Host 10.140.0.70 Port 1521
+DB LMSQ
+
+INSP_OWNER
+INSP_OWNER
+
+
+Network
+env0.mff.gb.net
+Port 22
+duffyb
+D:\Users\bduffy\Documents\WorkLaptopKeys\private.ppk
+
+
+
+
+Basic
+Host 10.0.101.2 1521
+FUTINST_CUST_SVC
+sitiknow
+
+nETOWRK
+51.179.200.62
+22
+yogeshg
+D:\Users\bduffy\Documents\yogeshg_priv.ppk

@@ -12,6 +12,7 @@ from polls.models import Polls
 #
 json_file = os.path.join(BASE_DIR, 'latest_updates.json')
 website = r'https://www.digitalmarketplace.service.gov.uk/digital-outcomes-and-specialists/opportunities'
+base_website = r'https://www.digitalmarketplace.service.gov.uk'
 website_ele = 'div'
 website_tag = 'search-result'
 scraped_info = get_information(raw_data=scrape_website(weburl=website, element=website_ele, tag=website_tag))
@@ -24,9 +25,14 @@ def run_program():
     new_entries = get_new_entries(current_data=current_db, scraped_data=scraped_info)
     if len(new_entries) >= 1:
         if update_database(new_entries=new_entries):
+            # Capture more data here and add it to database.
+            for entry in new_entries[0:1]:
+                print 'limited to 1'
+                url = '{}{}'.format(base_website,entry['fields']['url'])
+                new_entries_detailed = get_inner_information(raw_data=scrape_website(weburl=url, element='table',
+                                                                                     tag='summary-item-body'))
             # update trello
-            # if update_trello
-            send_emails(new_entries=new_entries, mailing_list=None)
+            #send_emails(new_entries=new_entries, mailing_list=None)
 
 
 run_program()

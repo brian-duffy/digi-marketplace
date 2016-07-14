@@ -2,6 +2,7 @@ import os
 import sys
 import django
 from datetime import datetime
+import lxml
 import urllib2
 import json
 from bs4 import BeautifulSoup
@@ -24,6 +25,14 @@ def scrape_website(weburl=None, element=None, tag=None):
     soup = BeautifulSoup(page, "lxml")
     all_results = soup.find_all(element, class_=tag)
     return all_results
+
+def get_inner_information(raw_data=None):
+    """
+    Function will take an inner url and retrieve certain elements
+    :param raw_data:
+    :return:
+    """
+    print raw_data
 
 def get_information(raw_data=None):
     # Takes array of search results and returns list [CLIENT, LOCATION, CLOSING_DATE, EXCERPT, URL_LINK, DATE_CLOSING]
@@ -63,3 +72,8 @@ def get_information(raw_data=None):
             fields_l.append(fields)
     return fields_l
     #return json.dumps(fields_l, ensure_ascii=True, default=json_serial)
+#website = r'https://www.digitalmarketplace.service.gov.uk/digital-outcomes-and-specialists/opportunities'
+#website_ele = 'div'
+#website_tag = 'search-result'
+#
+#print scrape_website(weburl=website, element=website_ele, tag=website_tag)[0]
